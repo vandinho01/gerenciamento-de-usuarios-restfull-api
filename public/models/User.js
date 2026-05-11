@@ -69,18 +69,16 @@ class User {
                     this[name] = new Date(json[name]);
                     break;
                 default:
-                    if(name.substring(0, 1) === '_')this[name] = json[name];
+                    if (name.substring(0, 1) === '_') this[name] = json[name];
 
             }
-
-
         }
 
     }
 
     static getUsersStorage() {
 
-       HttpRequest.get('/users');
+        return Fetch.get('/users');
 
     }
 
@@ -105,11 +103,11 @@ class User {
 
             if (this.id) {
 
-                promise = HttpRequest.put(`/users ${this.id}`, this.toJSON());
+                promise = Fetch.put(`/users/${this.id}`, this.toJSON());
 
             } else {
 
-                promise = HttpRequest.post(`/users`, this.toJSON());
+                promise = Fetch.post(`/users`, this.toJSON());
 
             }
 
@@ -119,7 +117,7 @@ class User {
 
                 resolve(this);
 
-            }).catch(e=>{
+            }).catch(e => {
 
                 reject(e);
 
@@ -131,7 +129,7 @@ class User {
 
     remove() {
 
-       return HttpRequest.delete(`user/${this.id}`);
+        return Fetch.delete(`/users/${this.id}`);
 
     }
 
