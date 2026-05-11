@@ -211,7 +211,7 @@ class UserController {
 
             try{
 
-                let obj = JSON.parse(ajax.responseText);
+                obj = JSON.parse(ajax.responseText);
 
             } catch(e){
 
@@ -219,7 +219,7 @@ class UserController {
 
             }
 
-            obs.users.forEach(dataUser => {
+            obj.users.forEach(dataUser => {
 
                 let user = new User();
 
