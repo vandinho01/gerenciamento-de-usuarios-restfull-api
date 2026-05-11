@@ -57,7 +57,9 @@ class HttpRequest {
 
             };
 
-            ajax.send();
+            ajax.setRequestHeader('Content-Type', 'apllication/json');
+
+            ajax.send(JSON.stringify(params));
 
         })
     }
